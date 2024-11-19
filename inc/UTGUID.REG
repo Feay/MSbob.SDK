@@ -1,0 +1,10 @@
+REGEDIT
+
+ 
+ 
+QDoc
+*******************
+
+HKEY_CLASSES_ROOT\{00020705-0000-0000-C000-000000000046} = QDoc
+HKEY_CLASSES_ROOT\{00020705-0000-0000-C000-000000000046}\InprocHandler = c:\ehome\qdoc\qdoc.dll
+ 

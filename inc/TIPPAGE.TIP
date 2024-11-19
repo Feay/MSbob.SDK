@@ -1,0 +1,188 @@
+// TIPPAGE.TIP
+// Created by Utopia Tip Editor version 1.0
+// YES BAS FILE
+// DO NOT MODIFY BY HAND
+
+#define sTRAOKNoChoice    3000
+#define sTRAEmptyAddressControl    3001
+#define sTRAPageUp    3002
+#define sTRAPageDown    3003
+#define sTRAPrintSetup    3004
+#define sERRNoDefaultPrinter    1000
+#define sDIASearching    1001
+#define sTRAExit    3005
+#define sTRAAboutExit    3006
+#define sDIAOffModal    1002
+#define sDIAOffModalWithOK    1003
+#define sTIPLongWait    1004
+#define sTIPShortWait    1005
+#define sTIPStartApp    1006
+#define sERRCheckSomething    1007
+
+#ifdef _RCINVOKED
+
+1 TIPS LOADONCALL
+BEGIN
+    0xBB8, 0x7,
+    0x5, 0x301, 0x1805, 0x1805, 0x1801, 0x141, 0x3, 
+END
+
+// sTRAOKNoChoice
+// trigger: modal dialog with no user choice is active and user clicks on inactive area
+// point to: modal balloon
+// kill: user clicks ok on modal dialog with no choice
+// BEEP
+// NOTE: trap and kill for this tip must be implement on an app by app, dialog by dialog basis
+sTRAOKNoChoice TIPS LOADONCALL
+BEGIN
+    0x0, 0x0,    // Tracking = Simple, Modality = Auto takedown, Style = Plain
+    "{cp preXS_GetAttnMajor}\0",
+    "You need to click \r\non a button first.\0",
+END
+
+// sTRAEmptyAddressControl
+// trigger: when an app brings up the address book control and it contains names (as opposed to books and mailing lists)
+sTRAEmptyAddressControl TIPS LOADONCALL
+BEGIN
+    0x0, 0x0,    // Tracking = Simple, Modality = Auto takedown, Style = Plain
+    "If this list is empty...\0",
+    "  ...then you have an empty address book. To add s",
+    "ome names, start the Address Book program.\0",
+END
+
+// sTRAPageUp
+// trigger: clicks scroll up arrow on screen in list or topic view (in notebook) or clicks on prev page screen arrow (in addressbook)
+// point to: arrrow just clicked
+// kill: uses page up 
+sTRAPageUp TIPS LOADONCALL
+BEGIN
+    0x0, 0x0,    // Tracking = Simple, Modality = Auto takedown, Style = Plain
+    "If you prefer...\0",
+    "  ...you can also use the Page Up key to see the p",
+    "revious page.\0",
+END
+
+// sTRAPageDown
+// trigger: clicks scroll down arrow on screen in list or topic view (in notebook) or clicks on next page screen arrow (in addressbook)
+// point to: arrrow just clicked
+// kill: uses page down
+sTRAPageDown TIPS LOADONCALL
+BEGIN
+    0x0, 0x0,    // Tracking = Simple, Modality = Auto takedown, Style = Plain
+    "If you prefer...\0",
+    "  ...you can also use the Page Down key to see the",
+    " next page.\0",
+END
+
+// sTRAPrintSetup
+// points to: Choose or setup printer button in utopia print dialog
+// trigger: print dialog appears
+// kill: user brings up windows printer setup dialog
+// 
+sTRAPrintSetup TIPS LOADONCALL
+BEGIN
+    0x0, 0x0,    // Tracking = Simple, Modality = Auto takedown, Style = Plain
+    "If you need to switch...\0",
+    "  ...to a different printer, or change your printe",
+    "r's settings, click on this button.\0",
+END
+
+// sERRNoDefaultPrinter
+// 
+sERRNoDefaultPrinter TIPS LOADONCALL
+BEGIN
+    0x101, 0x4,    // Tracking = None, Modality = Modal, Style = Error
+    "I can't find the printer...\0",
+    "You need to set it up using your Windows \042Control ",
+    "Panel\042 program. For more information, check the pr",
+    "inter's instructions, or refer to your Windows doc",
+    "umentation.\0",
+    "{cp btnM_OK}\0",
+END
+
+// sDIASearching
+// Trigger: put up while character searching
+// Killed: never
+// Where: from character
+sDIASearching TIPS LOADONCALL
+BEGIN
+    0x0, 0x0,    // Tracking = None, Modality = Auto takedown, Style = Plain
+    "{cp senS_HSearching}\0",
+    "{cp senL_Searching}   \r\n\0",
+END
+
+// sTRAExit
+// trigger: program opens
+// point to: character
+
+
+// sTRAAboutExit
+// trigger: about dialog comes up
+// kill: user clicks exit button on podium
+// point to: character (side)
+sTRAAboutExit TIPS LOADONCALL
+BEGIN
+    0x2, 0x0,    // Tracking = Simple, Modality = Modeless with dismissal, Style = Plain
+    "Looking for the exit?\0",
+    "To leave a Bob program, or the Bob Home, click on ",
+    "the Exit sign in the bottom right corner of your s",
+    "creen.\0",
+END
+
+// sDIAOffModal
+// Trigger:  Click off a modal dialog that has no default OK button
+// Point to:  The modal dialog
+sDIAOffModal TIPS LOADONCALL
+BEGIN
+    0x4, 0x0,    // Tracking = None, Modality = Modal auto takedown, Style = Plain
+    "Oops!\0",
+    "You need to click \r\non a button first.\0",
+END
+
+// sDIAOffModalWithOK
+// Trigger:  User clicks off a modal dialog that has a default button
+// Point to:  The default button
+sDIAOffModalWithOK TIPS LOADONCALL
+BEGIN
+    0x4, 0x0,    // Tracking = None, Modality = Modal auto takedown, Style = Plain
+    "Oops!\0",
+    "You need to click \r\non a button first.\0",
+END
+
+// sTIPLongWait
+// 
+sTIPLongWait TIPS LOADONCALL
+BEGIN
+    0x0, 0x0,    // Tracking = None, Modality = Auto takedown, Style = Plain
+    "\0",
+    "{cp senL_WorkingLongWait}\0",
+END
+
+// sTIPShortWait
+// 
+sTIPShortWait TIPS LOADONCALL
+BEGIN
+    0x0, 0x0,    // Tracking = None, Modality = Auto takedown, Style = Plain
+    "\0",
+    "{cp senL_WorkingShortWait}\0",
+END
+
+// sTIPStartApp
+// 
+sTIPStartApp TIPS LOADONCALL
+BEGIN
+    0x3, 0x0,    // Tracking = None, Modality = Modeless, Style = Plain
+    "\0",
+    "{cp senL_StartApp}\0",
+END
+
+// sERRCheckSomething
+// user hasn't checked a box
+sERRCheckSomething TIPS LOADONCALL
+BEGIN
+    0x4, 0x4,    // Tracking = None, Modality = Modal auto takedown, Style = Error
+    "{cp preXS_GetAttnMajor}\0",
+    "You need to check one!\0",
+END
+
+#endif // _RCINVOKED

@@ -1,0 +1,140 @@
+#ifdef _RCINVOKED
+
+#include <uerror.h>
+
+/***************************************************************************
+Some generally useful messages for Utopia errors.
+These are fallback messages which should be general enough to makes
+sense whenever the error would occur.  It is important to make these
+messages as friendly as possible.  DEFINITELY full sentences with a period.
+Usually expressed in the first person from the perspective of the actor.
+
+Hopefully, some recourse should be suggested.
+These messages are for programmer convenience to ensure that programs
+aren't left with nothing to say. Programs should try to come up with more
+specific and helpful responses to as many situations as possible.
+
+NOTE:  Some of these messages probably shouldn't come up.
+There's a lot left for experimentation and evolution, but let's define
+something for as many as possible.
+
+After Editing this file, rebuild with \SYSSRV\SYSSRV.MAK.
+The messages reside as resources in SYSSRV.DLL.
+
+History:
+created 2/24/94         -- davidb
+
+**WARNING** remember, since these become strings in the stringtable,
+they can't be more than 256 chars long.  SED
+
+****************************************************************************/
+
+STRINGTABLE
+BEGIN
+
+VB2ID(UERR_OVERFLOW)          "I had a 'Math Overflow' error.  Sometimes that can mess things up.  Perhaps you should save your work, quit your program, and start out fresh."
+VB2ID(UERR_OOM)               "I ran out of memory.  Saving your work would be a good idea.  To free up some memory, quit some other programs, or quit this one and start over."
+VB2ID(UERR_DLL)               "I had trouble loading a program.  Save your work and restart your computer.  If you still have trouble, running Bob Setup again might solve the problem."
+VB2ID(UERR_INTERNAL)          "Something happened that I'm not quite sure how to deal with.  Please restart your computer.  If you still have trouble, running Bob Setup again  might solve the problem."
+VB2ID(UERR_FILENOTFOUND)      "I can't find that file.  Please try another name or another location."
+VB2ID(UERR_FILEINUSE)         "That file is being used by another program right now.  Try closing the other program and then try to do what you want again."
+VB2ID(UERR_DEVICEIO)          "I'm having trouble with the disk.  If it is a floppy disk, try closing the disk drive door."
+VB2ID(UERR_FILEEXISTS)        "There is already a file by this name."
+VB2ID(UERR_BADRECLEN)         "The program has supplied a bad record length."
+VB2ID(UERR_DISKFULL)          "The disk is full. Perhaps you can delete some stuff and try again."
+VB2ID(UERR_EOF)               "I have reached the end of the file before I expected to. Perhaps this file isn't valid."
+VB2ID(UERR_BADRECNUM)         "The program has supplied a bad record number."
+VB2ID(UERR_BADFILENAME)       "The computer tells me that it doesn't like the way you typed that file name. A file name can only have up to 8 letters or numbers, a period, and 3 more letters or numbers.  No spaces allowed!"
+VB2ID(UERR_TOOMANYFILES)      "There are too many open files. Please close some files and try again."
+VB2ID(UERR_DEVICEUNAVAIL)     "I'm having trouble with the disk.  If it is a floppy disk, try closing the disk drive door."
+VB2ID(UERR_PERMISSIONDENIED)  "I don't have permission to change this file.  Either another program is using it right now, or someone made the file private."
+VB2ID(UERR_DISKNOTREADY)      "The disk isn't ready.  If it is a floppy disk, make sure it is securely in the disk drive with the disk drive door closed."
+VB2ID(UERR_RENACROSSDRIVE)    "I can't rename this file to a name on a different drive."
+VB2ID(UERR_ACCESSDENIED)      "I was unable to access that file or directory. Perhaps another program is using it right now."         
+VB2ID(UERR_PATHNOTFOUND)      "That disk drive or directory doesn't even exist.  Please try a different one."         
+VB2ID(UERR_FILEFORMAT)        "That file isn't the kind of file that I know how to load.  Please try a different one."
+VB2ID(UERR_CLIPBOARDFORMAT)   "I don't know how to paste the kind of object that is currently in the clipboard.  Try copying something else to the clipboard and then try pasting again."
+VB2ID(UERR_PRINTER)           "I'm having trouble getting the printer to work."
+
+UERR_GEN_OPERATION_CANCELLED  "The operation was successfully cancelled."
+UERR_GEN_OPERATION_FAILED     "That just didn't work.  Nobody told me why.  Please try it again."
+UERR_GEN_METHOD_NOT_FOUND     "I asked another program to do something for me, and it told me it didn't know how. Please try again."
+
+// REVIEW (davidb) - the following probably should be collapsed into a single message - if that.
+UERR_GEN_COULDNT_READ_PROP    "I asked another program for some information, but it wouldn't tell me."
+UERR_GEN_COULDNT_WRITE_PROP   "I gave some information to another program, but it wouldn't listen."
+UERR_GEN_READ_ONLY_PROP       "An attempt was made to change a read-only property."
+UERR_GEN_UNKNOWN_PROP         "An unknown property was requested."
+
+UERR_GEN_NOT_YET_IMPLEMENTED  "I didn't do that, because my programmer hasn't taught me how yet."
+UERR_GEN_SYSTEMRESOURCES      "Your computer has run out of system resources.  Try shutting down some other programs."
+UERR_GEN_BADSYSTEMSETUP       "There is something wrong with the way your system is set up.  Try running the Bob Setup program again."
+UERR_GEN_FILEREADONLY         "That file has been marked as 'Read Only'.  In other words, someone doesn't want you to change it."
+UERR_GEN_FILEEXISTS           "That file already exists.  Please try another name."
+UERR_GEN_LOCKEDDISK           "I can't deal with that disk because it is 'Write Protected.'"
+UERR_GEN_FILECREATE           "I had trouble creating that file."
+UERR_GEN_FILEREAD             "I had trouble reading that file."
+UERR_GEN_FILEWRITE            "I had trouble writing to that file."
+UERR_GEN_FILEOPEN             "I had trouble opening that file."
+UERR_GEN_JET                  "I am having trouble with a database."
+
+UERR_GEN_FILEFORMAT         "That file isn't the kind of file that I know how to load.  Please try a different one."
+UERR_GEN_NO_PRINTER         "I cannot print, because no default printer has been selected."
+UERR_GEN_PRINTER_SLEEPING   "The printer is not ready."
+UERR_GEN_BADPARAMETER       "An invalid parameter was passed between functions."
+UERR_GEN_BAD_PRINTER        "I cannot print, because the selected printer does not support graphics, or does not support TrueType fonts."
+UERR_GEN_BAD_PRINTERCHG     "I'm not going to use the printer you just picked, because it can't print your beautiful graphics or fonts."
+UERR_GEN_PRINTER_CONFIG     "I am having trouble getting your printer driver to work.  Please try a different printer, or reinstall your printer driver."
+
+// Mail services messages
+UERR_UMAIL_DUP_FOLDER_NAME  "There is already a cubby with this name.  You can't have two cubbies with the same name.  Try renaming the cubby to something else." 
+
+// TOC messages
+UERR_TOC_TOO_MANY_FILES      "There are too many open files. Please close some files and try again."
+UERR_TOC_INVALID_TYPE        "I don't know that Table of Contents Type Id."
+UERR_TOC_INVALID_ITEM        "I don't know that Table of Contents Item Id."
+UERR_TOC_INVALID_TYPE_DLL    "The type doesn't have a valid DLL associated with it."
+UERR_TOC_INVALID_BUNDLE      "This bundle file is corrupt."
+UERR_TOC_INVALID_APP         "I don't know about that application."
+UERR_TOC_INVALID_USER        "I don't know that user."
+UERR_TOC_DUPLICATE_NAME      "You already have a book or list by that name."
+UERR_TOC_NO_UTOPIA_FILES     "I couldn't find any files that I can use on this disk."
+
+//  QUILL messages - davidb
+UERR_QUILL_CVTFAILED          "I tried to convert that file, but I ran into a part I didn't understand.  If you go back to the program that created it, and save the file as plain text, I will do fine."
+UERR_QUILL_TOOMANYEDITS       "You've been editing for too long without saving.  Please save now."
+UERR_QUILL_NOTATEXTSELECTION  "You can only do that while text is selected.  Please select some text and try again."
+UERR_QUILL_NOTAFRAMESELECTION "I can only change a picture if it is selected.  Please click on the picture and try again."
+UERR_QUILL_SPELL_INSTALLATION "I can't spell check your document, because I can't get the spell check program to start.  The Bob Setup program can help you install it again."
+UERR_QUILL_AUTOSAVEFAILED     "I tried to save your work for you, but ran into some trouble.  Perhaps your hard disk is full, and you need to delete some stuff."
+
+
+// syssrv message - shaula
+UERR_TASK_WINVERWRONG    "I can't run this program.  I think it is meant for a different version of Windows than the one you're running now.  Check your Windows manual."
+UERR_TASK_INVALIDEXE    "There is something wrong with the .EXE file for this program -- it won't run.  Try re-installing it."
+UERR_TASK_NONWINEXE    "I can't run this program.  It needs to be a Windows or Bob program.  Check the box to make sure the program is not meant for something else."
+UERR_TASK_SECONDINST "A copy of this program should already be running. Press Ctrl+Esc keys to see a list of running programs. If your program isn't in the list, it might have crashed. Try restarting your computer."
+UERR_TASK_EXECOMPRESD    "I can't run this program.  It looks like the .EXE file for the program is compressed. You'll need to uncompress it or run it's install program before I can make it run."
+UERR_TASK_DLLCORRUPT    "I can't run this program.  One of the .DLL files it uses has a problem.  I'm sorry I can't tell you which one."
+UERR_TASK_EXE32BIT    "I can't run this program.  It needs a 32-bit operating system and you're running a 16-bit one right now."
+UERR_TASK_FILENOTFOUND "I couldn't find this program. Click Add Something, Program, and then search hard disk. Then re-add the program starter for it." 
+UERR_TASK_PATHNOTFOUND  "I couldn't find the directory that should have this program. Click Add Something, Program, and then search hard disk. Then re-add the object for it."
+UERR_TASK_UNKNOWN  "I couldn't run the program. I'm not really sure what went wrong."
+
+UERR_SYS_LOWGDI "You're running low on graphics memory. Your programs may \n begin to look and perform strangely. To prevent this from\nhappening, you need to close any programs you're not using."
+UERR_SYS_DISPLAYCHANGE "Hey! You changed the resolution while Bob was running! That had an unfortunate effect on Bob, as you can see. To fix it, change the resolution back to what it was, then "
+UERR_SYS_DISPLAYCHANGE2 "exit Bob. Then change the resolution to whatever you want it to be, and Bob will look just fine when you start it up again."
+
+UERR_JET_DBNOTFOUND "The database file UTOPIA.MDB could not be found."
+UERR_JET_ACCESSDENIED  "This program's database can't be opened now.  Please exit Windows and restart your computer by turning it off and on again. Then try running this program again. "
+UERR_JET_REPAIRFAILED  "This program will exit now because it could not open the database."
+USUCC_FIRSTTASK "Hey! Bob's not running. You cannot start this application unless Bob is running.  Please start Bob, then start your application from the Home."
+
+
+// addressbook message - mikehar
+UERR_ABOOK_EMPTYBOOK        "This address list is empty."
+UERR_ABOOK_CANCELUNBUNDLE   "the User has cancelled the unbundle."
+END
+
+
+#endif // _RCINVOKED
