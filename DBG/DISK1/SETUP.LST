@@ -1,0 +1,20 @@
+[Params]
+	WndTitle   = Microsoft Bob Setup
+	WndMess    = Starting Microsoft Bob Setup...
+	TmpDirSize = 900
+	TmpDirName = ~mssetup.t
+	CmdLine    = acmsetup /T utopia.stf /S %s %s /O "<none>"
+	DrvWinClass = Stuff-Shell
+	Require31  = This application requires a newer version of Microsoft Windows.
+	CabinetFile = u1.cab
+
+[Files]
+	@_mssetup.exe = _mssetup.exe
+	@acmsetup.exe = acmsetup.exe
+	@acmsetup.hlp = acmsetup.hlp
+	@mscpydis.dll = mscpydis.dll
+	@mssetup.dll  = mssetup.dll
+	@usetup.dll = usetup.dll
+	@utopia.stf = utopia.stf
+	utopia.inf = utopia.inf
+
